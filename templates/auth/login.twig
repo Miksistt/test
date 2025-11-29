@@ -1,0 +1,27 @@
+{# auth.twig #}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+    <link rel="stylesheet" href="/public/css/autorization.css" />
+</head>
+<body>
+<div class="auth-container">
+    <div class="auth-title">Вход</div>
+    {% if message is not empty %}
+        <div class="auth-error">{{ message|e }}</div>
+    {% endif %}
+    <form class="auth-form" method="post" autocomplete="off">
+        <label for="login-email">Email</label>
+        <input id="login-email" type="email" name="email" required maxlength="64" autocomplete="username" value="{{ email|default('') }}">
+
+        <label for="login-pass">Пароль</label>
+        <input id="login-pass" type="password" name="password" required maxlength="64" autocomplete="current-password">
+
+        <button class="sumbit-btn" type="submit" name="login">Войти</button>
+    </form>
+    <p>Нет аккаунта? <a class="auth-link" href="register.php">Зарегистрироваться</a></p>
+</div>
+</body>
+</html>

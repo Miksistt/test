@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      body{
+      position: relative;
+      background-image:url("oc.jpg") ;
+      background-size:cover;
+
+      }
+      #buydiv{
+         position: absolute;
+      }
+
+
+    </style>
+     <link rel="stylesheet" type="text/css" href="main.css">
+    <meta charset="utf-8">
+    <title>cookie clicker</title>
+      <a class="nav-link me-lg-3" href="/">Go Back</a>
+  </head>
+  <body>
+
+<div id="buydiv" style="background-color:black; color:white">
+  <h1>Shop</h1>
+
+<button type="button" title="legal autoclicker" onclick="a()" id="ab">auto clicker(<span id="apd"></span> cookies)<br><img src="ac.jpg" alt="hyperx pulsefire surge"></button><button type="button" title="bake more cookies at once" onclick="bo()" id="bob"> better oven(<span id="bopd"></span> cookies)<br><img src="oc.jpg" style="height:56px;width:75px"></button><img style="float: right;"src="shopkeeper.png" alt="shopkeeper">
+
+<br>
+<button type="button" title="watch games" onclick="cbc(-1)" id="cb">Chrome Book(250 cookies)<br><img src="cb.jpg"></button><button type="button" title="bake more cookies at once" onclick="store()" id="sb">a store(20000 cookies)<br><img src="s.png" alt=""></button>
+<br>
+<button type="button" title="have a maid help you make cookies" onclick="sis()" id="sisb">Maid (10 cookies)<br><img src="sis.png" alt="sister"> </button><button type="button" title="make cookie by itsself" onclick="scookiem()" >Small Cookie maker🤖️(<span id="sbpd"></span> cookies)</button>
+<br><button type="button" title="make cookie by itsself" onclick="mcookiem()" >Medium Cookie maker🤖️(<span id="mbpd"></span> cookies)</button><button type="button" title="make cookie by itsself" onclick="bcookiem()" >Large Cookie maker🤖️(<span id="bbpd"></span> cookies)</button>
+<br><button type="button" title="??????" onclick="gcookie()">Give your cookie away(100 cookies)</button>
+<button type="button" title="close the buy menu" onclick="buym(false)">leave</button>
+
+</div>
+
+
+<h1><div id="cd" style="display: inline">0</div> COOKIES</h1>
+<button type="button" onclick="mac(0)"><img src="cookie_ss.gif" alt="cookie"></button><br>
+<button type="button" onclick="mc(true)" id="musicb">start music🎵</button>
+<button type="button" style="display: none;" onclick="
+if (document.getElementById('isound').style.display == 'none') {
+    document.getElementById('isound').style.display = 'block';
+  } else {
+    document.getElementById('isound').style.display = 'none';
+  }" id="shmusicb">show/hide music</button>
+<button type="button" onclick="mc(false);document.getElementById('shmusicb').style.display = 'none';" id="smusicb" style="display: none;">stop music</button>
+<button type="button" onclick="buym(true)">buy stuff🏬</button>
+<div id="nem" style="background-color:red; color:white;position: absolute;">
+<h1>YOU DON'T HAVE ENOUGH COOKIES</h1>
+<button type="button" onclick="nmd(false)">close</button>
+</div>
+<p></p>
+<div style="height:780px;width:1340px;background-image:url('cb.png');display:none" id="mcc">
+<div style="text-align: center;"id="cbd">
+  <br>
+<br>
+<br><br>
+</div>
+</div>
+<div id="cbb" style="display:none">
+  <button type="button" onclick="if (document.getElementById('mcc').style.display == 'none') {
+      cbc(1)
+    } else {
+      cbc(0)
+    }">ON/OFF</button>
+
+
+</div>
+
+<a id="dl" download="savedata.json" style=" display:none" ></a>
+<h3>
+load save: <input type="file" id="loadfile123"  onchange="loaddata()">
+<br>
+<button type="button" name="button" onclick="savedata()">save data</button>
+</h3>
+
+
+<script>
+  "use strict";
+  function gcookie(){
+    if (c<100){
+      nmd(true)
+    }
+    else{
+      c=c-100
+
+    }
+  }
+  function scookiem(){
+      if (c-(200*sbpm)<0){
+        nmd(true)
+      }
+      else{
+        if (sblv==0 && car == false){
+            ca()
+        }
+        sblv=sblv+20
+        c=c-(200*sbpm)
+        lv=lv+1
+        sbpm=sbpm+sbpm/4
+
+      }
+      document.getElementById("sbpd").innerHTML=200*sbpm
+
+  }
+  function bcookiem(){
+      if (c-(6000*bbpm)<0){
+        nmd(true)
+      }
+      else{
+        if (bblv==0 && car == false){
+            ca()
+        }
+        bblv=bblv+400
+        c=c-(6000*bbpm)
+        lv=lv+1
+        bbpm=bbpm+bbpm/4
+
+      }
+      document.getElementById("bbpd").innerHTML=6000*bbpm
+
+  }
+  function mcookiem(){
+      if (c-(500*mbpm)<0){
+        nmd(true)
+      }
+      else{
+        if (mblv==0 && car == false){
+            ca()
+        }
+        mblv=mblv+40
+        c=c-(500*mbpm)
+        lv=lv+1
+        mbpm=mbpm+mbpm/4
+
+      }
+      document.getElementById("mbpd").innerHTML=500*mbpm
+
+  }
+  function store(){
+    if (c<20000){
+      nmd(true)
+    }
+    else{
+      c=c-20000
+      lv=lv+1
+      cm=cm+500
+    }
+  }
+  function nmd(a){
+    if(a){
+      document.getElementById("nem").style.display = "block";
+    }
+    else{
+      document.getElementById("nem").style.display = "none";
+    }
+  }
+  function bo(){
+
+    if (c-(200*opm)<0){
+      nmd(true)
+    }
+    else{
+      c=c-(200*opm)
+      if (olv==0){
+        cm=cm+5
+      }
+      else{
+        cm=cm+20
+      }
+
+      lv=lv+1
+      olv=olv+1
+      opm=opm+1.5
+    }
+    document.getElementById("bopd").innerHTML=200*opm
+    if (olv==10){
+      document.getElementById("bob").disabled = true;
+    }}
+function cbc(a){
+  if (a==-1){
+    if (c<250){
+      nmd(true)
+      return
+    }
+    else{
+      c=c-250
+      document.getElementById("cb").disabled = true;
+
+
+    }
+
+    var ifrm = document.createElement('iframe');
+    var gl=['https://www.youtube.com/embed/videoseries?list=PLoBxKk9n0UWdu13Wx7pK5rgJFA8PHPcLQ','https://www.youtube.com/embed/videoseries?list=PLhCH_nPE4JTqbX-jJyYrl7ED4O9i9ivru','https://www.youtube.com/embed/videoseries?list=PLDaLNkCsG9WleytZrq41JHPCiZhzJogWJ','https://www.youtube.com/embed/videoseries?list=PLymLdOBrNp2ncp0UmbhV082qk0wgeqUMa']
+    ifrm.setAttribute('src', gl[gri(gl.length)]);
+    ifrm.setAttribute('id', 'cbv');
+
+    ifrm.setAttribute('allow','accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' )
+    ifrm.setAttribute('allowfullscreen','')
+    ifrm.style.width = '1160px';
+    ifrm.style.height = '600px';
+    document.getElementById("cbd").appendChild(ifrm);
+    document.getElementById("mcc").style.display="none";
+    document.getElementById("cbb").style.display="block";
+
+  }
+  if (a==0){
+    document.getElementById("mcc").style.display="none";
+
+  }
+  if (a==1) {
+    document.getElementById("mcc").style.display="inline-block";
+
+
+  }
+}
+    function a(){
+      if (c-(20*apm)<0){
+        nmd(true)
+      }
+      else{
+        if (alv==0 && car == false){
+            ca()
+        }
+        alv=alv+1
+        c=c-(20*apm)
+        lv=lv+1
+        apm=apm+0.2
+
+      }
+      document.getElementById("apd").innerHTML=20*apm}
+
+
+    function sis(){
+      if (c<10){
+        nmd(true)
+      }
+      else{
+        c=c-10
+        lv=lv+1
+        cm=cm+5
+        document.getElementById("sisb").disabled = true;
+
+      }
+
+
+  }
+  function buym(a){
+    document.getElementById("bopd").innerHTML=200*opm
+    if (olv==10){
+      document.getElementById("bob").disabled = true;
+    }
+    document.getElementById("apd").innerHTML=20*apm
+    document.getElementById("sbpd").innerHTML=200*sbpm
+      document.getElementById("mbpd").innerHTML=500*mbpm
+            document.getElementById("bbpd").innerHTML=6000*bbpm
+    if (a){  document.getElementById("buydiv").style.display = "block";}
+    else{
+      document.getElementById("buydiv").style.display = "none";
+      document.getElementById("cd").innerHTML = c.toString();
+    }
+
+  }
+  function mac(at){
+
+    if (at==0){
+      addccookie()
+    }
+        if (c%(25*lv)==0) {
+          oa.play()
+          document.body.style.backgroundImage="url('oo.jpg')";
+          setTimeout(function(){
+              document.body.style.backgroundImage="url('oc.jpg')";
+          }, 2500);
+          setTimeout(function(){
+              document.body.style.backgroundImage="url('cbg.jpg')";
+          }, 3500);
+
+          setTimeout(function(){
+              document.body.style.backgroundImage="url('oc.jpg')";
+          }, 6500);
+        }
+  document.getElementById("cd").innerHTML = c.toString();
+  }
+  function cheatedected() {
+    console.log("die cheater")
+    window.location.href = "c.html";
+
+
+  }
+  function addccookie(){
+    if (c==0) {
+
+    } else {
+    let  tu=gtime()-lc;
+    if (tu<0.04) {
+      console.log(tu)
+      console.log(lc)
+    cheatedected();}
+
+    }
+    c=c+cm;
+    lc=gtime();
+    console.log("ff")
+  }
+  function gri(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+async function ca(){
+  car=true
+  while(true){
+    c=c+alv+sblv+mblv+bblv
+   document.getElementById("cd").innerHTML = c.toString();
+   mac(-1)
+   await new Promise(r => setTimeout(r, 1000));
+  }
+
+
+}
+function mc(a){
+  if (a){
+    try{
+      document.getElementById("isound").parentNode.removeChild(isound)}
+    catch(uselessssssssssssssss){
+
+    }
+    document.getElementById("smusicb").style.display="inline-block";
+    document.getElementById("shmusicb").style.display="inline-block";
+
+    var sl=["https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/323071235&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/340840692&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/254747957&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/296041610&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/171343320&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/164916627&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/583653450&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/450047370&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/270800210&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/142758287&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/201947488&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposrts=false&show_teaser=true&visual=true","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/301459553&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/344596334&color=%23e8bce4&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",,"https://www.youtube.com/watch?v=QiFBgtgUtfw?autoplay=1","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/437764107&color=%23e8bce4&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/720608434&color=%235c5c7c&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/20863566&color=%23cef6ad&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/134318106&color=%2318281d&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",,"https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/522304485&color=%2318281d&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/228833298&color=%2318281d&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/225073180&color=%2318281d&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/373227848&color=%2318281d&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/708280165&color=%2318281d&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","https://www.youtube.com/embed/9aQV5Xwg7bU?autoplay=1","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/683416565&color=%237c649c&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/438080691&color=%23181c20&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/438076239&color=%23181c20&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/438076239&color=%23181c20&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/438076239&color=%23181c20&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/438076239&color=%23181c20&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/238320652&color=%23c86c7f&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/280338081&color=%23c86c7f&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/223659436&color=%23c86c7f&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/360169493&color=%23c86c7f&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true","tps://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/255705655&color=%231c1f49&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"]
+/*"https://www.youtube.com/embed/oZ0-Dde8cMU?autoplay=1""https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/510738942&color=%23e8bce4&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"*/
+    var ifrm = document.createElement("iframe");
+    ifrm.setAttribute("src", sl[gri(sl.length)]);
+    ifrm.setAttribute("id", "isound");
+    ifrm.style.width = "640px";
+    ifrm.style.height = "480px";
+    document.body.appendChild(ifrm);
+     ifrm.style.display = "none";
+     document.getElementById("musicb").innerHTML="change music"
+
+  }
+  else{
+    document.getElementById("isound").parentNode.removeChild(isound)
+    document.getElementById("musicb").innerHTML="start music"
+    document.getElementById("smusicb").style.display="none";
+  }
+
+}
+
+
+  function gtime(){
+    var time = new Date();
+    return time.getTime();
+  }
+function savedata(){
+  //以前程序写的烂只能这样了
+  var data={};
+  data["c"]=c;
+  data["olv"]=olv;
+  data["opm"]=opm;
+  data["apm"]=apm;
+  data["sbpm"]=sbpm;
+  data["mbpm"]=mbpm;
+  data["bbpm"]=bbpm;
+  data["car"]=car;
+  data["sblv"]=sblv;
+  data["mblv"]=mblv;
+  data["bblv"]=bblv;
+  data["alv"]=alv;
+  data["lv"]=lv;
+  data["cm"]=cm;
+  data["sisbdisabled"]=document.getElementById("sisb").disabled
+  data["cbdisabled"]=document.getElementById("cb").disabled
+  data["bob"]=document.getElementById("bob").disabled
+  dl.href="data:text/plain,"+encodeURIComponent(JSON.stringify(data));
+  dl.click();
+}
+
+function loaddata(){
+  // Check for the various File API support.
+
+           var file = document.querySelector('input[type=file]').files[0];
+           var reader = new FileReader()
+              reader.onload = function (event) {
+                  var data = JSON.parse(event.target.result);
+                  console.log(data)
+                  c=data["c"];
+                  olv=data["olv"];
+                  opm=data["opm"];
+                  apm=data["apm"];
+                  sbpm=data["sbpm"];
+                  mbpm=data["mbpm"];
+                  bbpm=data["bbpm"];
+                  car=data["car"];
+                  sblv=data["sblv"];
+                  mblv=data["mblv"];
+                  bblv=data["bblv"];
+                  alv=data["alv"];
+                  lv=data["lv"];
+                  cm=data["cm"];
+                  document.getElementById("sisb").disabled=data["sisbdisabled"];
+                  //document.getElementById("cb").disabled=data["cbdisabled"];
+                  //document.getElementById("cbb").style.display="block";
+                  if (data["cbdisabled"]!=false){
+                      c=c+250
+                      cbc(-1)
+                  }
+                  document.getElementById("bob").disabled=data["bob"];
+                  if (car){
+                    ca();
+                  }
+              }
+
+           reader.readAsText(file);
+
+}
+  var lc=gtime();
+  var c=0;
+  var olv=0;
+  var opm=1;
+  var apm=1;
+  var sbpm=1;
+  var mbpm=1;
+  var bbpm=1;
+  var car=false;
+  var sblv=0;
+  var mblv=0;
+  var bblv=0;
+  var alv=0;
+  var lv=1;
+  var cm=1;
+
+  var oa = new Audio('oven_door.mp3');
+  document.getElementById("buydiv").style.display = "none";
+  document.getElementById("nem").style.display = "none";
+
+</script>
+
+  </body>
+</html>

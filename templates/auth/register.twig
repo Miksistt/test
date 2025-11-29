@@ -1,0 +1,30 @@
+{# register.twig #}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="/public/css/autorization.css" />
+</head>
+<body>
+<div class="auth-container">
+    <div class="auth-title">Регистрация</div>
+    {% if message is not empty %}
+        <div class="auth-error">{{ message|e }}</div>
+    {% endif %}
+    <form class="auth-form" method="post" autocomplete="off">
+        <label for="register-name">Имя</label>
+        <input id="register-name" type="text" name="name" required maxlength="64" value="{{ name|default('') }}">
+
+        <label for="register-email">Email</label>
+        <input id="register-email" type="email" name="email" required maxlength="64" value="{{ email|default('') }}">
+
+        <label for="register-pass">Пароль(мин. 6 символов)</label>
+        <input id="register-pass" type="password" name="password" required minlength="6" maxlength="64">
+
+        <button class="sumbit-btn" type="submit" name="register">Зарегистрироваться</button>
+    </form>
+    <p>Уже зарегистрированы? <a href="/templates/auth/login.twig">Войти</a></p>
+</div>
+</body>
+</html>
